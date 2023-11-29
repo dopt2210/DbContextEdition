@@ -13,7 +13,7 @@ namespace DbContextEdition.Connection
         public string Sokhung {  get; set; }
         public string Somay {  get; set; }
         public int Mamau {  get; set; }
-        public string Dungtichxilanh {  get; set; }
+        public int Dungtichxilanh {  get; set; }
         public string Hangxe {  get; set; }
         public string Tenxe {  get; set; }
         public string Anh {  get; set; }

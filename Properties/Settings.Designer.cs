@@ -33,5 +33,15 @@ namespace DbContextEdition.Properties {
                 return ((string)(this["TestNhanhConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DOPT2210\\SQLEXPRESS;Initial Catalog=QlXeMay;Integrated Security=True")]
+        public string QlXeMayConnectionString {
+            get {
+                return ((string)(this["QlXeMayConnectionString"]));
+            }
+        }
     }
 }

@@ -13,6 +13,7 @@ namespace DbContextEdition.Connection
     {
         private DbContext _dbContext = new DbContext();
         public DataTable GetAllByDataTable() => _dbContext.GetTable("Select * from tXemay");
+        public DataTable FindByDataTable(string query) => _dbContext.GetTable($"Select * from tXemay where {query}");
 
         public List<Xemay> GetAll()
         {
@@ -26,7 +27,7 @@ namespace DbContextEdition.Connection
                     Sokhung = row["sokhung"].ToString(),
                     Somay = row["somay"].ToString(),
                     Mamau = (int)row["mamau"],
-                    Dungtichxilanh = row["dungtichxilanh"].ToString(),
+                    Dungtichxilanh = (int)row["dungtichxilanh"],
                     Hangxe = row["hangxe"].ToString(),
                     Tenxe = row["tenxe"].ToString(),
                     Anh = row["anh"].ToString(),
@@ -39,7 +40,8 @@ namespace DbContextEdition.Connection
 
         public void addNew(Xemay nv)
         {
-            string query = $"INSERT INTO tXemay ([sokhung],[somay],[tenxe],[mamau],[dungtichxilanh],[hangxe],[tenxe],[anh]) VALUES (N'{nv.Sokhung}', N'{nv.Somay}', N'{nv.Mamau}', N'{nv.Dungtichxilanh}', N'{nv.Hangxe}', N'{nv.Tenxe}', N'{nv.Anh}')";
+            string query = $"INSERT INTO tXemay ([sokhung],[somay],[mamau],[dungtichxilanh],[hangxe],[tenxe],[anh]) " +
+                $"VALUES (N'{nv.Sokhung}', N'{nv.Somay}', N'{nv.Mamau}', N'{nv.Dungtichxilanh}', N'{nv.Hangxe}', N'{nv.Tenxe}', N'{nv.Anh}')";
             _dbContext.ExcuteQuery(query);
         }
         public void delete(int idNv)
@@ -50,7 +52,7 @@ namespace DbContextEdition.Connection
         }
         public void update(Xemay nv, int idNv)
         {
-            string query = $"UPDATE tXemay SET [sokhung]=N'{nv.Sokhung}', [somay]=N'{nv.Somay}', [mamau]= N'{nv.Mamau}', [dungtichxilanh]=N'{nv.Dungtichxilanh}', [hangxe]=N'{nv.Hangxe}',[tenxe]='{nv.Tenxe}' [anh]=N'{nv.Anh}' WHERE id = N'{nv.Id}'";
+            string query = $"UPDATE tXemay SET [sokhung]=N'{nv.Sokhung}', [somay]=N'{nv.Somay}', [mamau]= N'{nv.Mamau}', [dungtichxilanh]=N'{nv.Dungtichxilanh}', [hangxe]=N'{nv.Hangxe}',[tenxe]='{nv.Tenxe}', [anh]=N'{nv.Anh}' WHERE id = N'{nv.Id}'";
             _dbContext.ExcuteQuery(query);
 
         }
